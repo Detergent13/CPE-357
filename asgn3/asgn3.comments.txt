@@ -1,0 +1,121 @@
+In order to avoid starvation and get you some feedback at all, I am
+going to invoke the aging algorithm and send back your fws and
+h{en,de}codes with the automated portion of the grading, and skip the
+manual review.
+
+The bad news is that this means you miss the individual feedback.  The
+good news is that (a) you get it back sooner, and (b) truthfully it is
+rare for anybody's grade to go up during the manual review.
+
+Most of detailed feedback would be more or less the same as you got
+for lab03 the other day, and, like I said, most people's grades
+don't go up when I starting looking at the program in detail.
+
+For what it's worth, the most common places where you would have lost
+points are:
+
+1) for not checking error-return values from library functions
+and system calls.  Other than (most times) printf(3) and maybe close(2),
+you should always check these return values and report errors. and
+
+2) embedding magic numbers in your code.  Numeric values whose purpose
+is not blindingly obvious should be avoided.
+
+In general, you'll get comments on poor design choices, but those two
+errors are simple, obvious, and easy to ignore.  Just don't do it.
+
+If you feel somehow that the automated process has gone terribly
+wrong, let me know and I'll take a look, but remember, I'll look at
+the whole program rather than just the piece you point out.
+
+If you've recieved a grade that's better than you deserve, you could
+either let me know or consider it a Bank Error in Your Favor and move
+on.
+
+======================================================================
+Score for asgn3:      50 / 50
+
+---------
+Comments:
+---------
+
+
+
+Checking Line Lengths...
+
+...done.
+
+
+
+--------------------------------
+Running the application 
+--------------------------------
+
+
+
+-----------------Application tests-------------------------
+
+Test Results:
+   These are the results of trying your hencode and hdecode
+against several input files with different characteristics 
+described by the filename.  The output of your program
+is compared to a reference output using diff(1).  If they
+differ, the test case is a failure.
+
+  Note: The diffs below are piped through cat -v to ensure
+that unprintable characters are rendered safely.
+
+  Tests 0-6 are the same tests published online.
+
+
+
+
+--------------------------------
+Running hencode 
+--------------------------------
+
+
+        00_empty...ok.
+        01_onechar...ok.
+        02_twochar...ok.
+        03_short...ok.
+        04_medium...ok.
+        05_binary...ok.
+        06_nulls...ok.
+        07_newlines...ok.
+        08_alphabetic...ok.
+        09_printable...ok.
+        10_nonnegativeonly...ok.
+        11_random...ok.
+        12_longcodes...ok.
+        13_shortTwochar...ok.
+
+--------------------------------------------------------
+
+
+
+--------------------------------
+Running hdecode 
+--------------------------------
+
+
+        00_empty.huff...ok.
+        01_onechar.huff...ok.
+        02_twochar.huff...ok.
+        03_short.huff...ok.
+        04_medium.huff...ok.
+        05_binary.huff...ok.
+        06_nulls.huff...ok.
+        07_newlines.huff...ok.
+        08_alphabetic.huff...ok.
+        09_printable.huff...ok.
+        10_nonnegativeonly.huff...ok.
+        11_random.huff...ok.
+        12_longcodes.huff...ok.
+        13_shortTwochar.huff...ok.
+
+--------------------------------------------------------
+
+
+Passed 28 out of 28 tests.
+

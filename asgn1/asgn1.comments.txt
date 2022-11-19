@@ -1,0 +1,91 @@
+Score for asgn1: 48 / 50
+
+---------
+Comments:
+---------
+
+
+*** So-called "Magic Numbers"---literal values in the
+    program whose purpose is not blindingly obvious---
+    should be avoided.
+
+			> int temp = (8 - (count % 8));  
+
+
+*** Even here.  What if you decided you wanted to change the width of
+    a tab (as expand(1) allows you to do with the -t option).  Do
+    these two eights represent the same thing?  It is hard to tell.
+
+
+*** In the future you probably don't want to indent a full tab at
+    each level.  This gets very deep very fast.
+      Perhaps you used an editor with tab-widths set to something
+    other than 8 for development.  When they're expanded to the 
+    standard width of 8, however, the formatting gets confused.
+    Indentation depths of not 8 are fine, but be sure that when you
+    save, it saves in some way that's compatable with other
+    editors.
+      (Tabs are so troublesome, in fact, that many corporate style
+    guides forbid them.  I have my editor expand them to spaces 
+    before saving source code files. (see the style guide))
+
+
+
+No Makefile found, winging it.
+
+
+Checking Line Lengths...
+
+...done.
+
+
+
+--------------------------------
+Compiling the application files (to check for warnings)
+--------------------------------
+
+
+gcc -ansi -pedantic -Wall -I. -o /dev/null detab.c
+
+
+--------------------------------
+Testing for presence of detab 
+--------------------------------
+
+
+detab found.
+
+
+--------------------------------
+Running the application 
+--------------------------------
+
+
+
+--------------------------------------------------------
+Test Results:
+   These are the results of trying your detab against
+several input files with different characteristics 
+described by the filename.
+
+
+
+        0_Empty...ok.
+        1_NoTabs...ok.
+        2_AllTabs...ok.
+        3_TrailingTabs...ok.
+        4_MixedTabs...ok.
+        5_OneSpaceTab...ok.
+        6_ReallyLongLine...ok.
+        7_Backspace...ok.
+        8_LotsBackspaces...ok.
+        9_embeddedFFbyte...ok.
+        A_AnotherBackspaceTest...ok.
+        B_OneMoreBackspaceTest...ok.
+        C_CarriageReturns...ok.
+
+Passed 13 out of 13 tests.
+
+--------------------------------------------------------
+
+Passed.

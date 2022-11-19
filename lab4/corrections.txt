@@ -1,0 +1,17 @@
+Dexter Rush (dcrush)
+
+1) For sizeof(numbers)- in this scope, the compiler knows the number of
+elements in the array. Thus, it will take sizeof(int) and multiply that
+by 5 (the number of elements), resulting in 20. I just treated it like an
+int *.
+
+2) Full credit
+
+3) Linker will throw a fit over not finding an extern, not compiler.
+
+4) Full credit
+
+5) I just neeeded to catch s being NULL, and return NULL in that case.
+
+6) Just messed up my recursive thinking a bit. Need to set list->next
+to the function call, then return.

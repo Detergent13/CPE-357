@@ -1,0 +1,16 @@
+Dexter Rush (dcrush)
+The program will exit with an error if anything other than 2 console arguments are supplied.
+N/A
+1.
+	a. char *cp;
+	b. char ap[5];
+	c. int **pp;
+2. Yes. void *p = &p;
+3. The condition of the for loop is our issue- p is a *pointer* to a char, not a char itself. Thus, we shouldn't be checking if p != '\0'- we need to dereference p first, i.e. (*p) != '\0'. This oversight will probably result in an infinite loop! This is because the address of the char that p is pointing to will most likely never be 0x0000, so the exit condition for the loop will never happen. 
+4. 
+	a. This is correct in that the way that we reference an "array" is really just using a pointer to its first element. 
+	b. However, they are not necessarily the same- it's a bit of a square and rectangle situation. Pointers are used for, well, pointing at any data in memory, whereas an array will always be a contiguous block of 
+	memory of some type. They are not functionally the same, it's just that pointers are how we happen to pass arrays, since C doesn't have a dedicated 'array' type or similar.
+5. This is because the argument for perror is a *pointer* towards a value. Where it's pointing will never change, and thus this is a constant. On the other hand, the parameter for strerror is an actual error code, which will of course change many times. (Or hopefully not once if our code is well-written...)
+6. This time tracker will overflow some time in 2038. We could simply extend it to a 64-bit signed integer, but of course this will cause issues with systems limited to 32 bits, etc., as well as code designed to work with a 32-bit value. There's no "magic bullet" solution to this issue.
+7. It is actually an unsigned int. It's defined in stddef.h. 

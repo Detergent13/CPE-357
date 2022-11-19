@@ -1,0 +1,417 @@
+Score for asgn2:      44 / 50
+
+---------
+Comments:
+---------
+
+> I use an array, top[], to keep track of the top n words.  This
+> alleviates the necessity of looking through the whole table at the
+> end for the top elements.  Is this better for performance? I don't
+> really know. But it makes sense to me and seems to work!
+
+*** Most likely this will have significantly worse behavior.
+    Maintaining your top k words all along will be O(nk) where n is
+    the total number of words in your input, including duplicates.
+    Pulling them out at the end will be O(uk) where u is the number of
+    unique words in your collection.  u <= n 
+
+ERROR: make fw failed:
+----------
+>  make: *** No rule to make target 'node.h', needed by 'fw'.  Stop.
+----------
+
+*** Uh-oh.  Guessing:
+
+    > dcrush% cat node.h
+    > typedef struct Node {
+    >   int count;
+    >   struct Node *next;
+    >   char *word;
+    > } Node;
+    > dcrush% make
+    > gcc -Wall -pedantic -g -o fw fw.c 
+    > dcrush%
+
+    Guess I guessed right...
+
+Checking Line Lengths...
+
+...done.
+
+
+
+--------------------------------
+Compiling the application files (to check for warnings)
+--------------------------------
+
+
+gcc -ansi -pedantic -Wall -I. -o /dev/null fw.c
+fw.c: In function 'main':
+fw.c:41:18: warning: implicit declaration of function 'getopt' [-Wimplicit-function-declaration]
+   41 |     while((opt = getopt(argc, argv, "n:")) != -1) {
+      |                  ^~~~~~
+
+
+--------------------------------
+Testing for presence of fw 
+--------------------------------
+
+
+fw found.
+
+
+
+
+--------------------------------
+Compiling the application files (to check for warnings)
+--------------------------------
+
+
+gcc -ansi -pedantic -Wall -I. -o /dev/null fw.c
+fw.c: In function 'main':
+fw.c:41:18: warning: implicit declaration of function 'getopt' [-Wimplicit-function-declaration]
+   41 |     while((opt = getopt(argc, argv, "n:")) != -1) {
+      |                  ^~~~~~
+
+
+--------------------------------
+Testing for presence of fw 
+--------------------------------
+
+
+fw found.
+
+
+--------------------------------
+Running the application 
+--------------------------------
+
+
+
+------------------------
+Running the application (extended test)
+------------------------
+
+
+--------------------------------------------------------
+Test Results:
+   These are the results of trying your fw against
+mine on a number of different test cases. 
+
+  The output of your version of fw is compared to 
+the output of ~pn-cs357/demos/fw using diff (1).
+If they differ, even in whitespace, the test case is a failure.
+
+  Note, the first two tests, "00_usage" and "01_usage"
+give bad arguments and expect to see a message of the form
+"usage: fw [-n num] [ file1 [ file2 [...] ] ]" The message
+doesn't have to be exactly the same, but it's looking for the
+word "usage".
+
+  Each command (with one exception) is run with a timeout of 
+2 minutes, so if your program takes more than 2 minutes, it 
+will be interrupted. 
+
+  The exceptions are "man1" and "oneword-67108864-times" which
+get 5 minutes.
+
+Tests:
+  ------------------------------------------------------
+  00_usage.cmd                  ..............       ok.
+  01_usage_notanumber.cmd       ..............       ok.
+  02_emptyfile.cmd              ..............       ok.
+  03_tendistinctwords.cmd       ..............       ok.
+  04_emptystdin.cmd             ..............       ok.
+  05_stdin.cmd                  ..............       ok.
+  06_multifile.cmd              ..............       ok.
+  07_missingfile.cmd            ..............       ok.
+  08_missingfileGoOn.cmd        ..............       ok.
+  09_toofewwords.cmd            ..............       ok.
+  10_alloneword.cmd             ..............       ok.
+  11_reallylongline.cmd         ..............       ok.
+  12_reallylongword.cmd         ..............       ok.
+  13_oneword.cmd                ..............       ok.
+  14_twentywords.cmd            ..............       ok.
+  15_usrdictwords.cmd           ..............       ok.
+  16_usrdictwordstwice.cmd      ..............       ok.
+  17_man1.cmd                   ..............     FAIL.
+  18_usrdictwords-man1.cmd      ..............     FAIL.
+  19_oneword-67108864-times.cmd ..............       ok.
+  20_man1uncompressed.cmd       ..............       ok.
+  21_usrdictwords-man1uncompressed.cmd..............       ok.
+  22_data-no-words.cmd          ..............     FAIL.
+  23_two_words_FF.cmd           ..............       ok.
+  24_five_words_nuls.cmd        ..............       ok.
+  ------------------------------------------------------
+FAILED. ( passed 22 / 25 )
+
+--------------------------------------------------------
+Those were the tests.  Below are chances for redemption.
+--------------------------------------------------------
+
+
+========================================================
+Without formatting
+
+  Trying again, but treating whitespace as insignificant.
+Whitespace was an import part of the spec., but this test
+helps differentiate between partial failures and the more
+complete type.
+========================================================
+
+Same tests (ignoring whitespace):
+  ------------------------------------------------------
+  00_usage.cmd                  ...(cached)...       ok.
+  01_usage_notanumber.cmd       ...(cached)...       ok.
+  02_emptyfile.cmd              ...(cached)...       ok.
+  03_tendistinctwords.cmd       ...(cached)...       ok.
+  04_emptystdin.cmd             ...(cached)...       ok.
+  05_stdin.cmd                  ...(cached)...       ok.
+  06_multifile.cmd              ...(cached)...       ok.
+  07_missingfile.cmd            ...(cached)...       ok.
+  08_missingfileGoOn.cmd        ...(cached)...       ok.
+  09_toofewwords.cmd            ...(cached)...       ok.
+  10_alloneword.cmd             ...(cached)...       ok.
+  11_reallylongline.cmd         ...(cached)...       ok.
+  12_reallylongword.cmd         ...(cached)...       ok.
+  13_oneword.cmd                ...(cached)...       ok.
+  14_twentywords.cmd            ...(cached)...       ok.
+  15_usrdictwords.cmd           ...(cached)...       ok.
+  16_usrdictwordstwice.cmd      ...(cached)...       ok.
+  17_man1.cmd                   ...(cached)...  FAILURE.
+  18_usrdictwords-man1.cmd      ...(cached)...  FAILURE.
+  19_oneword-67108864-times.cmd ...(cached)...       ok.
+  20_man1uncompressed.cmd       ...(cached)...       ok.
+  21_usrdictwords-man1uncompressed.cmd...(cached)...       ok.
+  22_data-no-words.cmd          ...(cached)...  FAILURE.
+  23_two_words_FF.cmd           ...(cached)...       ok.
+  24_five_words_nuls.cmd        ...(cached)...       ok.
+  ------------------------------------------------------
+FAILED. ( passed 22 / 25 )
+
+========================================================
+Without either header or formatting
+
+  Trying again, but treating whitespace as insignificant
+and clipping off the header.
+========================================================
+
+Same tests (ignoring whitespace and clipping headers):
+  -----------------------------------------------------
+  00_usage.cmd                  ...(cached)...       ok.
+  01_usage_notanumber.cmd       ...(cached)...       ok.
+  02_emptyfile.cmd              ...(cached)...       ok.
+  03_tendistinctwords.cmd       ...(cached)...       ok.
+  04_emptystdin.cmd             ...(cached)...       ok.
+  05_stdin.cmd                  ...(cached)...       ok.
+  06_multifile.cmd              ...(cached)...       ok.
+  07_missingfile.cmd            ...(cached)...       ok.
+  08_missingfileGoOn.cmd        ...(cached)...       ok.
+  09_toofewwords.cmd            ...(cached)...       ok.
+  10_alloneword.cmd             ...(cached)...       ok.
+  11_reallylongline.cmd         ...(cached)...       ok.
+  12_reallylongword.cmd         ...(cached)...       ok.
+  13_oneword.cmd                ...(cached)...       ok.
+  14_twentywords.cmd            ...(cached)...       ok.
+  15_usrdictwords.cmd           ...(cached)...       ok.
+  16_usrdictwordstwice.cmd      ...(cached)...       ok.
+  17_man1.cmd                   ...(cached)...  FAILURE.
+  18_usrdictwords-man1.cmd      ...(cached)...  FAILURE.
+  19_oneword-67108864-times.cmd ...(cached)...       ok.
+  20_man1uncompressed.cmd       ...(cached)...       ok.
+  21_usrdictwords-man1uncompressed.cmd...(cached)...       ok.
+  22_data-no-words.cmd          ...(cached)...       ok.
+  23_two_words_FF.cmd           ...(cached)...       ok.
+  24_five_words_nuls.cmd        ...(cached)...       ok.
+  ------------------------------------------------------
+FAILED. ( passed 23 / 25 )
+
+
+Results:
+                       Except Except
+         Tests Correct Format Header
+         ----- ------- ------ ------
+Overall:    25      22     22     23
+
+
+
+
+#############################
+# Failure details are below #
+#############################
+
+
+==========================================
+Test failed: 17_man1.cmd
+==========================================
+  ----------
+  Reference:
+  ----------
+  The top 10 words (out of 26190) are:
+      43467 n
+      43382 i
+      43174 e
+      43080 m
+      43025 t
+      42965 r
+      42669 l
+      42607 w
+      42383 u
+      42327 o
+  ----------
+  Submitted:
+  ----------
+  *** Stderr output:
+    Timed out.
+    Child process (143754) exited due to signal (Terminated).
+  ------------------------------
+  Diffs (<reference >submitted):
+  ------------------------------
+  1,11d0
+  < The top 10 words (out of 26190) are:
+  <     43467 n
+  <     43382 i
+  <     43174 e
+  <     43080 m
+  <     43025 t
+  <     42965 r
+  <     42669 l
+  <     42607 w
+  <     42383 u
+  <     42327 o
+
+==========================================
+Test failed: 18_usrdictwords-man1.cmd
+==========================================
+  ----------
+  Reference:
+  ----------
+  The top 10 words (out of 440127) are:
+      43524 n
+      43454 i
+      43222 e
+      43172 m
+      43115 t
+      43013 r
+      42737 l
+      42646 w
+      42481 o
+      42416 u
+  ----------
+  Submitted:
+  ----------
+  *** Stderr output:
+    Timed out.
+    Child process (143838) exited due to signal (Terminated).
+  ------------------------------
+  Diffs (<reference >submitted):
+  ------------------------------
+  1,11d0
+  < The top 10 words (out of 440127) are:
+  <     43524 n
+  <     43454 i
+  <     43222 e
+  <     43172 m
+  <     43115 t
+  <     43013 r
+  <     42737 l
+  <     42646 w
+  <     42481 o
+  <     42416 u
+
+==========================================
+Test failed: 22_data-no-words.cmd
+==========================================
+  ----------
+  Reference:
+  ----------
+  The top 10 words (out of 0) are:
+  ----------
+  Submitted:
+  ----------
+  *** Stderr output:
+    Timed out.
+    Child process (143987) exited due to signal (Terminated).
+  ------------------------------
+  Diffs (<reference >submitted):
+  ------------------------------
+  1d0
+  < The top 10 words (out of 0) are:
+
+
+
+
+
+#################################################################
+# The last chance diffs file is below.  These are diffs without #
+# either header or formatting and case-insensitive              #
+#################################################################
+
+==========================================
+Test failed: 17_man1.cmd
+==========================================
+  ----------
+  Reference:
+  ----------
+  The top 10 words (out of 26190) are:
+      43467 n
+      43382 i
+      43174 e
+      43080 m
+      43025 t
+      42965 r
+      42669 l
+      42607 w
+      42383 u
+      42327 o
+  ----------
+  Submitted:
+  ----------
+  ------------------------------
+  Diffs -w -b -B -i (<reference >submitted):
+  ------------------------------
+  1,10d0
+  <     43467 n
+  <     43382 i
+  <     43174 e
+  <     43080 m
+  <     43025 t
+  <     42965 r
+  <     42669 l
+  <     42607 w
+  <     42383 u
+  <     42327 o
+==========================================
+Test failed: 18_usrdictwords-man1.cmd
+==========================================
+  ----------
+  Reference:
+  ----------
+  The top 10 words (out of 440127) are:
+      43524 n
+      43454 i
+      43222 e
+      43172 m
+      43115 t
+      43013 r
+      42737 l
+      42646 w
+      42481 o
+      42416 u
+  ----------
+  Submitted:
+  ----------
+  ------------------------------
+  Diffs -w -b -B -i (<reference >submitted):
+  ------------------------------
+  1,10d0
+  <     43524 n
+  <     43454 i
+  <     43222 e
+  <     43172 m
+  <     43115 t
+  <     43013 r
+  <     42737 l
+  <     42646 w
+  <     42481 o
+  <     42416 u

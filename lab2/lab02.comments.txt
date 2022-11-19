@@ -1,0 +1,89 @@
+Hi all,
+
+  Please note that when grading these, I looked for the presence of
+the written problems.  I did not, in general, look for correctness
+(that kinda week, but I figure some feedback sooner might be better
+than better feedback in six months).  For that, you can look at the
+solutions on the web site.
+
+-PLN
+==============================================================================
+Score for lab02: 4 / 5
+
+---------
+Comments:
+---------
+
+
+
+*** You should check the return values of _all_ library and
+    system calls to verify that they worked correctly.  The
+    only one you really don't need to check is exit().  E.g.,
+
+	> line = (char *)malloc(sizeof(char) * (count + 1));
+	> strncpy(line, buffer, (count + 1));
+
+
+*** I'm glad you're cehcking here, but you owe your users the best
+    error messages you can provide.  To that end, when possible, you
+    should be using perror(3) or strerror(3) to report what actually
+    went wrong.
+
+	> if(buffer == NULL) {
+	> 	printf("Something went wrong with mallocing!");
+	> 	exit(1);
+
+
+Checking Line Lengths...
+
+...done.
+
+
+
+--------------------------------
+Compiling the application files (to check for warnings)
+--------------------------------
+
+
+gcc -Wall -I. -o /dev/null uniq.c
+
+
+--------------------------------
+Testing for presence of uniq 
+--------------------------------
+
+
+uniq found.
+
+
+--------------------------------
+Running the application 
+--------------------------------
+
+
+
+--------------------------------------------------------
+Test Results:
+   These are the results of trying your uniq against
+several input files with different characteristics 
+described by the filename.  These tests are by no 
+means exhaustive.  In fact, they're rather minimal.
+
+
+        0_Empty                        ... ok.
+        1_OneLine                      ... ok.
+        2_TwoDifferentLines            ... ok.
+        3_TwoSameLines                 ... ok.
+        4_LotsOfSameLines              ... ok.
+        5_LotsOfSameLinesOneDifferent  ... ok.
+        6_ReallyLongLine               ... ok.
+        7_ThreeReallyLongLines         ... ok.
+        8_ShrinkingLines               ... ok.
+        9_NoNewlineAtEOF               ... ok.
+        A_NoNewlineAtEOFdifferent      ... ok.
+
+Passed 11 out of 11 tests.
+
+--------------------------------------------------------
+
+Passed all tests.

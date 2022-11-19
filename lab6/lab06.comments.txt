@@ -1,0 +1,15 @@
+Score for lab06:      5 / 5
+
+---------
+Comments:
+---------
+
+
+*** looks good.
+
+
+
+Checking Line Lengths...
+
+...done.
+

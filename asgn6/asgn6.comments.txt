@@ -1,0 +1,96 @@
+Score for asgn6:      46 / 50
+
+---------
+Comments:
+---------
+
+
+
+Checking Line Lengths...
+
+LINES TOO LONG:
+    mush2.c has 2 lines over 80 characters.
+    The longest was 84 characters at line 238.
+
+
+  For readability purposes, lines should be kept
+under 80 characters, the standard terminal width.
+
+...done.
+
+
+
+--------------------------------
+Compiling the application files (to check for warnings)
+--------------------------------
+
+
+gcc -Wall -I. -c -o /dev/null mush2.c
+  mush2.c:12:10: fatal error: mush.h: No such file or directory
+     12 | #include "mush.h"
+        |          ^~~~~~~~
+  compilation terminated.
+
+
+--------------------------------
+Running the application 
+--------------------------------
+
+
+
+---------------- Begin Tests ---------------------------
+Test Results:
+   These are the results of trying your mush2 against
+several input files with different characteristics 
+described by the filename.
+
+  Not all failures are necessarily real failures.
+
+   Extra prompts and any changes in whitespace are 
+ignored here. 
+
+        00_Single_Command_Path...ok.
+        01_Single_Command_NoPath...ok.
+        02_Command_With_Args...ok.
+        03_Single_Pipe...ok.
+        04_Single_Redirect...ok.
+        05_DoubleRedirect...ok.
+        06_ManyArgs...ok.
+        07_DeepPipe...ok.
+        08_BadCommandFollowedByGood...ok.
+        09_BadRedirect...ok.
+        10_AmbiguousRedirect...FAILURE.
+        11_TestCD...ok.
+        12_ReallyParallel...ok.
+        13_ManyArgs...ok.
+        14_DeepPipe...ok.
+        15_TestCDhome...ok.
+        A__TooManyArgs...ok.
+        B__TooDeepPipe...ok.
+
+
+Passed 15 out of 16 tests.
+
+=================================
+Differences 10_AmbiguousRedirect.input ("/bin/echo hello | /bin/cat < /dev/null\n")
+=================================
+8-P /bin/echo hello | /bin/cat < /dev/null
+--------------
+Expected output:
+--------------
+/bin/cat: ambiguous input
+--------------
+Actual output:
+--------------
+Ambiguous input redirection, line 1.
+
+--------------
+Difference (reference is <, test is >)
+--------------
+1c1,2
+< /bin/cat: ambiguous input
+---
+> Ambiguous input redirection, line 1.
+> 
+
+FAILED.

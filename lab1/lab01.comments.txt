@@ -1,0 +1,70 @@
+A note on grading:
+
+  Since this is the first lab, I want to explain how lab grading works.
+
+  I grade labs on a five-point scale:
+
+    5 --- practically perfect, like Mary Poppins (or I missed the flaws)
+    4 --- minor flaws
+    3 --- some flaws to quite a few flaws, the usual floor for a good effort
+    2 \__ don't make me go here
+    1 /
+    0 --- didn't turn it in or it didn't compile.
+
+  When I enter these in the gradebook (which you can see linked from
+  the class web page), I have a family of pseudostudents that I use as
+  performance benchmarks.  They are named "Min A-", "Min B-", etc.,
+  and I carry their grades across throughout the quarter.  On (most)
+  labs, the Min siblings get 4, 3, 2, and 1, respectively, so even if
+  you get a 3/5 (60%), that still goes into the gradebook as a B-, and
+  shouldn't be a cause for worry.
+
+
+  As for the comments below... some are automatically generated and
+  some some are added by hand.  They're definitely not always in order
+  from compilation to testing, but usually they make sense.  Because
+  there are so many of you, they're not always terribly verbose, so if
+  you don't understand why I said something even after pondering it
+  for a while, come by and ask.
+
+  For what it's worth, on this lab, there were a few items of good
+  programming practice (covered in the style guide) that seem to have
+  caused trouble for a lot of people: 
+
+  One is the use of magic numbers, which can make code hard to
+  understand and easy to make mistakes with, but by far the greatest
+  problem was with error checking and reporting.  You should check the
+  return values of all library routines and system calls for success,
+  and, if there's a failure, report an accurate error message on
+  stderr.  Perror(3) and strerror(3) can be very helpful for this,
+  since they report the error message appropriate to the current value
+  of errno.  One thing you really do not want to do is to print
+  something like "Permission denied" when you have no reason to
+  believe that's actually the source of the error.  That just confuses
+  users.
+
+  Finally, if you didn't already know it, the little perl program I
+  use to test for long lines is ~pnico/bin/longlines.pl.  You can run
+  this, too, and save yourself the heartache of a point lost due to
+  falling off the right side of the page. :)
+
+  Now, back to grading...
+
+============================================================================
+
+
+Score for lab01:      5 / 5
+
+---------
+Comments:
+---------
+
+
+
+No Makefile found, winging it.
+
+
+Checking Line Lengths...
+
+...done.
+

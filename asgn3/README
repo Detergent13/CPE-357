@@ -1,0 +1,9 @@
+Dexter Rush (dcrush)
+
+A couple of things- I consciously chose to not abstract my "magic number" of 24
+for bitshifting in the conversion from uint32_t to uint8_t. 
+I did this because I felt that its abstraction would only make the code harder
+to read and understand, which is of course counterintuitive to abstraction's
+purpose. The same goes for my 8 in converting bytes to bits. 
+Instead, I decided to use verbose comments to explain the operations.
+Hopefully this decision makes sense!

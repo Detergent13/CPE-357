@@ -1,0 +1,5 @@
+Dexter Rush (dcrush)
+
+I use an array, top[], to keep track of the top n words. 
+This alleviates the necessity of looking through the whole table at the end for the top elements.
+Is this better for performance? I don't really know. But it makes sense to me and seems to work!
